@@ -77,28 +77,30 @@
   
   </header>
 
-  <div class="container">
-    <h2 class="mt-5">Registrar Inventario de Alimentos</h2>
-    <form>
+  <div class="container mt-5">
+    <h2>Modificar Alimento del Inventario</h2>
+    <form method="post">
+        {% csrf_token %}
         <div class="form-group">
-            <label for="food-name">Nombre del Alimento</label>
-            <input type="text" class="form-control" id="food-name" placeholder="Ingrese nombre del alimento" required>
+            <label for="nombre">Nombre del Alimento</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ alimento.nombre }}" required>
         </div>
         <div class="form-group">
-            <label for="quantity">Cantidad</label>
-            <input type="number" class="form-control" id="quantity" placeholder="Ingrese cantidad" required>
+            <label for="cantidad">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" step="0.01" value="{{ alimento.cantidad }}" required>
         </div>
         <div class="form-group">
-            <label for="unit">Unidad</label>
-            <input type="text" class="form-control" id="unit" placeholder="Ingrese unidad (kg, litros, etc.)" required>
+            <label for="unidad">Unidad</label>
+            <input type="text" class="form-control" id="unidad" name="unidad" value="{{ alimento.unidad }}" required>
         </div>
         <div class="form-group">
-            <label for="expiry-date">Fecha de Expiración</label>
-            <input type="date" class="form-control" id="expiry-date" required>
+            <label for="fecha_vencimiento">Fecha de Vencimiento</label>
+            <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" value="{{ alimento.fecha_vencimiento }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar Alimento</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </form>
 </div>
+
   <script src="/"></script>
   <link rel="stylesheet" href="/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
   <script src="/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>

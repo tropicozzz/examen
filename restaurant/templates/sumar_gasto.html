@@ -77,34 +77,32 @@
   
   </header>
 
-  <div class="container">
-    <h2 class="mt-5">Registrar Transacción Contable</h2>
-    <form>
+  <div class="container mt-5">
+    <h2>Agregar Gasto</h2>
+    <form method="post">
+        {% csrf_token %}
         <div class="form-group">
-            <label for="transaction-date">Fecha de Transacción</label>
-            <input type="date" class="form-control" id="transaction-date" required>
+            <label for="descripcion">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
         </div>
         <div class="form-group">
-            <label for="account">Cuenta</label>
-            <input type="text" class="form-control" id="account" placeholder="Ingrese cuenta" required>
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required>
         </div>
         <div class="form-group">
-            <label for="description">Descripción</label>
-            <input type="text" class="form-control" id="description" placeholder="Ingrese descripción" required>
+            <label for="monto">Monto</label>
+            <input type="number" class="form-control" id="monto" name="monto" step="0.01" required>
         </div>
         <div class="form-group">
-            <label for="amount">Monto</label>
-            <input type="number" class="form-control" id="amount" placeholder="Ingrese monto" required>
-        </div>
-        <div class="form-group">
-            <label for="transaction-type">Tipo de Transacción</label>
-            <select class="form-control" id="transaction-type" required>
-                <option value="" disabled selected>Seleccione el tipo de transacción</option>
-                <option value="debit">Débito</option>
-                <option value="credit">Crédito</option>
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria" name="categoria" required>
+                <option value="Compras">Compras</option>
+                <option value="Salarios">Salarios</option>
+                <option value="Mantenimiento">Mantenimiento</option>
+                <option value="Otros">Otros</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar Transacción</button>
+        <button type="submit" class="btn btn-primary">Agregar Gasto</button>
     </form>
 </div>
   <link rel="stylesheet" href="/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">

@@ -77,37 +77,33 @@
   
   </header>
 
-<div class="container">
-  <h2 class="mt-5">Reporte de Transacciones Contables</h2>
-  <table class="table table-striped">
-      <thead>
-          <tr>
-              <th>Fecha</th>
-              <th>Cuenta</th>
-              <th>Descripción</th>
-              <th>Monto</th>
-              <th>Tipo de Transacción</th>
-          </tr>
-      </thead>
-      <tbody>
-          <!-- Aquí se deberían insertar dinámicamente las filas de la tabla con los datos de las transacciones -->
-          <tr>
-              <td>2024-07-15</td>
-              <td>1001</td>
-              <td>Compra de suministros</td>
-              <td>50000</td>
-              <td>Débito</td>
-          </tr>
-          <tr>
-              <td>2024-07-14</td>
-              <td>2001</td>
-              <td>Pago de servicios</td>
-              <td>30000</td>
-              <td>Crédito</td>
-          </tr>
-          <!-- Más filas aquí -->
-      </tbody>
-  </table>
+  <div class="container mt-5">
+    <h2>Modificar Gasto</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ gasto.descripcion }}" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" value="{{ gasto.fecha }}" required>
+        </div>
+        <div class="form-group">
+            <label for="monto">Monto</label>
+            <input type="number" class="form-control" id="monto" name="monto" step="0.01" value="{{ gasto.monto }}" required>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria" name="categoria" required>
+                <option value="Compras" {% if gasto.categoria == "Compras" %}selected{% endif %}>Compras</option>
+                <option value="Salarios" {% if gasto.categoria == "Salarios" %}selected{% endif %}>Salarios</option>
+                <option value="Mantenimiento" {% if gasto.categoria == "Mantenimiento" %}selected{% endif %}>Mantenimiento</option>
+                <option value="Otros" {% if gasto.categoria == "Otros" %}selected{% endif %}>Otros</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
 </div>
 
 
